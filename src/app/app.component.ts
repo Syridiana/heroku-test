@@ -22,6 +22,8 @@ export class AppComponent {
   };
 
   limpiar(){
-    this.promedio = (this.edadUno + this.edadDos)/2;
+    this.edadDos = 0;
+    this.edadUno = 0;
+    this.promedio = 0;
   };
 }

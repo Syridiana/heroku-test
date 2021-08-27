@@ -7,7 +7,7 @@ import { Usuario } from './clases/usuario';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ejercicio 1';
+  title = 'my-app';
   edadUno = 0;
   edadDos = 0;
   promedio = 0;

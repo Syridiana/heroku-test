@@ -1,6 +1,6 @@
-<h1>{{title}}</h1>
+<!--<h1>{{title}}</h1>
 
-<br><br>
+ <br><br>
 {{myUsuario.nombre}}
 
 <br><br>
@@ -17,4 +17,16 @@
 <br><br>
 <input type="button" value="Calcular" (click)=calcular()>
 <br>
-<input type="button" value="Limpiar cuadros de texto" (click)=limpiar()>
+<input type="button" value="Limpiar cuadros de texto" (click)=limpiar()> -->
+<!-- <img id="bg" src="../assets/img/background.jpg" alt=""> -->
+<nav id="navBar">
+    <a class="navItem" routerLink="/"><img class="navIcon" src="../assets/img/home.svg" alt="">Home</a>
+    <a class="navItem" routerLink="/login"><img class="navIcon" src="../assets/img/user.svg" alt="">Login</a>
+    <a class="navItem" routerLink="/quien-soy"><img class="navIcon" src="../assets/img/eye.svg" alt="">Quien soy</a>
+</nav>
+<section id="mainSection">
+    <header>
+        <h1>Mi Aplicacion</h1>
+        <router-outlet></router-outlet>
+    </header>
+</section>

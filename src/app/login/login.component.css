@@ -265,3 +265,12 @@ input[type=text]:placeholder {
 * {
   box-sizing: border-box;
 }
+
+#logo{
+  width: 30px;
+  height: auto;
+}
+
+#button{
+  cursor: pointer;
+}

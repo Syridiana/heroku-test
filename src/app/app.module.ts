@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BienvenidoComponent } from './bienvenido/bienvenido.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
+import { QuienSoyComponent } from './quien-soy/quien-soy.component';
+import { routing } from './app.routing';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { ErrorComponent } from './error/error.component';
     AppComponent,
     BienvenidoComponent,
     LoginComponent,
-    ErrorComponent
+    ErrorComponent,
+    QuienSoyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

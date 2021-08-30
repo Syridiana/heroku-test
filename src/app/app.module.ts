@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { QuienSoyComponent } from './quien-soy/quien-soy.component';
 import { routing } from './app.routing';
+import { Ej1Component } from './ej1/ej1.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { routing } from './app.routing';
     BienvenidoComponent,
     LoginComponent,
     ErrorComponent,
-    QuienSoyComponent
+    QuienSoyComponent,
+    Ej1Component
   ],
   imports: [
     BrowserModule,

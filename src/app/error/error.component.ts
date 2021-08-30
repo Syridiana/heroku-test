@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../clases/usuario';
 
 @Component({
   selector: 'app-error',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error.component.css']
 })
 export class ErrorComponent implements OnInit {
-
-  constructor() { }
+myUsuario: Usuario =  new Usuario();
 
   ngOnInit(): void {
   }

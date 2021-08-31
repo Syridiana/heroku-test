@@ -1,21 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;700;900&family=Vollkorn:wght@400;500;700;900&display=swap');
 
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color: #FFFAFF;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Vollkorn", serif;
   height: 100vh;
 }
 
 a {
-  color: #92badd;
+  color: #2272FC;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
+  font-family: "Vollkorn", serif;
 }
 
 h2 {
@@ -25,7 +26,9 @@ h2 {
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px; 
-  color: #cccccc;
+  color: #FFFAFF;
+  font-family: "Vollkorn", serif;
+  cursor: pointer;
 }
 
 
@@ -74,8 +77,8 @@ h2.inactive {
 }
 
 h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  color: #022E79;
+  border-bottom: 2px solid #2272FC;
 }
 
 
@@ -83,7 +86,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #2272FC;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -102,10 +105,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  font-family: "Raleway", sans-serif;
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #92374D;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -119,7 +123,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 input[type=text] {
   background-color: #f6f6f6;
   border: none;
-  color: #0d0d0d;
+  color: #022E79;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -135,11 +139,12 @@ input[type=text] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+  font-family: "Vollkorn", serif;
 }
 
 input[type=text]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #2272FC;
 }
 
 input[type=text]:placeholder {
@@ -237,13 +242,13 @@ input[type=text]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  background-color: #2272FC;
   content: "";
   transition: width 0.2s;
 }
 
 .underlineHover:hover {
-  color: #0d0d0d;
+  color: #022E79;
 }
 
 .underlineHover:hover:after{

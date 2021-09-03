@@ -2,7 +2,6 @@
 
 *{
     text-align: center; 
-
 }
 
 
@@ -14,7 +13,7 @@ body{
 
 #navBar{
     width: 150px;
-    background-color:#92374D;
+    background-color:#2E1284;
     height: 100%;
     position: fixed;
     top: 0;
@@ -62,6 +61,6 @@ h1{
     font-family: "Vollkorn";
     font-weight: 700;
     font-size: 40px;
-    color:#022E79;
+    color:#2E1284;
 }
 

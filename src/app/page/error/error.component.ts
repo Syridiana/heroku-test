@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../clases/usuario';
+import { Usuario } from '../../clases/usuario';
 
 @Component({
   selector: 'app-error',

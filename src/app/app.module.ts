@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,10 @@ import { ErrorComponent } from './page/error/error.component';
 import { QuienSoyComponent } from './page/quien-soy/quien-soy.component';
 import { Ej1Component } from './page/ej1/ej1.component';
 import { MenuPrincipalComponent } from './page/menu-principal/menu-principal.component';
+import { AuthenticationService } from './servicios/auth.service';
+
+import { environment } from '../environments/environment';
+
 
 
 @NgModule({
@@ -20,15 +26,17 @@ import { MenuPrincipalComponent } from './page/menu-principal/menu-principal.com
     ErrorComponent,
     QuienSoyComponent,
     Ej1Component,
-    MenuPrincipalComponent
+    MenuPrincipalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-
+    FormsModule,    
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

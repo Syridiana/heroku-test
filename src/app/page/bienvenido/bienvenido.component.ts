@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { Usuario } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-bienvenido',
@@ -8,11 +8,13 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 })
 export class BienvenidoComponent implements OnInit {
 
-  constructor(private service:UsuarioService) { 
-    this.usuarioActual = service.nombreUsuario;
+  constructor(private usuarioService:Usuario, public usuarioActual: Usuario) { 
+    this.usuarioActual =  new Usuario;
+    this.usuarioActual.email = usuarioService.email;
+    this.usuarioActual.password = usuarioService.password;
    }
 
-   usuarioActual : string;
+
   ngOnInit(): void {
     
   }

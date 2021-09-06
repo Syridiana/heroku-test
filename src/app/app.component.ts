@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Usuario } from './clases/usuario';
+import { AuthenticationService } from 'src/app/servicios/auth.service';
+import { Usuario } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,11 @@ export class AppComponent {
   edadUno = 0;
   edadDos = 0;
   promedio = 0;
-  myUsuario:Usuario;
 
-  constructor() {
-    this.myUsuario = new Usuario();
+  constructor(private authService: AuthenticationService, private usuarioService: Usuario, public usuarioActual: Usuario) {
+    this.usuarioActual =  new Usuario;
+    this.usuarioActual.email = usuarioService.email;
+    this.usuarioActual.password = usuarioService.password;
   }
 
   calcular(){

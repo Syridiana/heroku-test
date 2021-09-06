@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
-  nombreUsuario: string;
+export class Usuario {
+  email: string;
+  password: string;
   constructor() { 
-    this.nombreUsuario = "";
+    this.email = "";
+    this.password = "";
   }
 }

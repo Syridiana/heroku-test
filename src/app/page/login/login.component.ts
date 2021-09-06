@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   email = '';
   pass = '';
 
+
   constructor(private routes: Router, private authService: AuthenticationService, private usuarioService:Usuario, private usuarioActual: Usuario) { 
     this.usuarioActual = usuarioService;
   }
@@ -53,4 +54,9 @@ export class LoginComponent implements OnInit {
     signOut() {
     this.authService.SignOut();
     }
+
+    TestSignIn() {
+      this.authService.SignIn('kiki@mail.com', 'unotresdos');
+  
+      }
 }

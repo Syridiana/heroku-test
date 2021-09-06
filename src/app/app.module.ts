@@ -15,6 +15,9 @@ import { MenuPrincipalComponent } from './page/menu-principal/menu-principal.com
 import { AuthenticationService } from './servicios/auth.service';
 
 import { environment } from '../environments/environment';
+import { NavBarComponent } from './page/nav-bar/nav-bar.component';
+import { ToastComponent } from './componentes/toast/toast.component';
+
 
 
 
@@ -27,6 +30,8 @@ import { environment } from '../environments/environment';
     QuienSoyComponent,
     Ej1Component,
     MenuPrincipalComponent,
+    NavBarComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

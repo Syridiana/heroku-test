@@ -16,11 +16,14 @@ const routes: Routes = [
   { path: 'ej1', component: Ej1Component },
   { path: '**', component: ErrorComponent }
 ];
+const queryParams = {};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
 
 export class AppRoutingModule { }
 

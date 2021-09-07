@@ -16,9 +16,11 @@ import { AuthenticationService } from './servicios/auth.service';
 
 import { environment } from '../environments/environment';
 import { NavBarComponent } from './page/nav-bar/nav-bar.component';
-import { ToastComponent } from './componentes/toast/toast.component';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorMessageComponent } from './componentes/error-message/error-message.component';
+import { ErrorMessagesService } from './servicios/error-messages.service';
+import { SuccessMessageComponent } from './componentes/success-message/success-message.component';
+import { SuccessMessageService } from './servicios/success-message.service';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { ToastComponent } from './componentes/toast/toast.component';
     Ej1Component,
     MenuPrincipalComponent,
     NavBarComponent,
-    ToastComponent,
+    ErrorMessageComponent,
+    SuccessMessageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -39,9 +43,13 @@ import { ToastComponent } from './componentes/toast/toast.component';
     FormsModule,    
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    
+    NgbModule
   ],
-  providers: [AuthenticationService],
+  providers: [
+    AuthenticationService, 
+    ErrorMessagesService,
+    SuccessMessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

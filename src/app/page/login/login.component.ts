@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/servicios/usuario.service';
 import { AuthenticationService } from 'src/app/servicios/auth.service';
 import { gsap } from "gsap";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   pass = '';
 
 
-  constructor(private routes: Router, private authService: AuthenticationService, private usuarioService:Usuario, private usuarioActual: Usuario) { 
+
+  constructor(private routes: Router, public authService: AuthenticationService, private usuarioService:Usuario, private usuarioActual: Usuario) { 
     this.usuarioActual = usuarioService;
   }
 
@@ -32,16 +34,6 @@ export class LoginComponent implements OnInit {
     this.tl.play();
   }
   
-  siguiente(){
-  /*   this.service.nombreUsuario="Laala"; */
-    console.log('siguiente');
-    /* var modelo = this; */
-   /*  this.routes.navigate(['home']); */
-    setTimeout(() => {
-      this.routes.navigate(['home']);
-    }, 2000);
-  }
-
   signUp() {
     this.authService.SignUp(this.email, this.pass);
     }

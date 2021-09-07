@@ -10,6 +10,7 @@ import { Usuario } from 'src/app/servicios/usuario.service';
 })
 export class NavBarComponent implements OnInit {
   userDisplayName : any;
+  showLogOutMessage = false;
 
   constructor(public authService: AuthenticationService, private usuarioService: Usuario) {
    }
@@ -20,6 +21,10 @@ export class NavBarComponent implements OnInit {
 
   signOut() {
     this.authService.SignOut();
+    this.showLogOutMessage = true;
+    setTimeout(()=>{
+      this.showLogOutMessage = false;
+    }, 3000)
     }
 
 }

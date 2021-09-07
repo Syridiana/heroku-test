@@ -22,3 +22,4 @@
         <p class="py-2 d-none d-md-inline-block" *ngIf="authService.isLoggedIn">Bienvenida/o: {{this.authService.email}}</p>
     </div>
 </nav>
+<div class="alert alert-danger" *ngIf="showLogOutMessage">Successful logout ! See you soon</div>

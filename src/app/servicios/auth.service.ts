@@ -21,7 +21,7 @@ this.isLoggedIn = false;
 /* Sign up */
 SignUp(email: string, password: string) {
 this.angularFireAuth.createUserWithEmailAndPassword(email, password)
-.then(res => {
+.then((res: any) => {
 console.log('You are Successfully signed up!', res);
 this.usuarioService.email = email;
 this.usuarioService.password = password;
@@ -29,7 +29,7 @@ sessionStorage.setItem('loggedUser', email);
 this.isLoggedIn = true;
 this.email = email;
 })
-.catch(error => {
+.catch((error: any) => {
 console.log('Something is wrong:', error.message);
 });
 }
@@ -38,7 +38,7 @@ console.log('Something is wrong:', error.message);
 SignIn(email: string, password: string) {
 this.angularFireAuth
 .signInWithEmailAndPassword(email, password)
-.then(res => {
+.then((res: any) => {
 console.log('You are in!');
 this.usuarioService.email = email;
 this.usuarioService.password = password;
@@ -47,7 +47,7 @@ this.routes.navigate(['/home']);
 this.isLoggedIn = true;
 this.email = email;
 })
-.catch(err => {
+.catch((err: any) => {
 console.log('Something went wrong:',err.message);
 });
 }

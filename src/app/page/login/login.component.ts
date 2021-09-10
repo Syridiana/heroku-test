@@ -5,6 +5,8 @@ import { AuthenticationService } from 'src/app/servicios/auth.service';
 import { gsap } from "gsap";
 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -49,6 +51,6 @@ export class LoginComponent implements OnInit {
 
     TestSignIn() {
       this.authService.SignIn('kiki@mail.com', 'unotresdos');
-  
       }
+
 }

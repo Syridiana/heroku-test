@@ -1,0 +1,10 @@
+<h1>Ahorcado</h1>
+  <p id="ratefeld"><span *ngFor="let guion of palabraGuiones">{{guion}}</span></p>
+  <form name="rateformular">
+  <input name="ratezeichen" type="text" size="5" maxlength="1" [(ngModel)]="letraIngresada">
+  <input name="ratebutton" type="button" value="Adivina" (click)=chequearLetraIngresada()>
+  
+  <p id="gerateneBuchstaben">Letras erroneas: <span *ngFor="let letra of letrasErroneas">{{letra}}</span></p>
+  <img src="http://www.writteninpencil.de/Projekte/Hangman/hangman0.png" id="hangman"><br />
+  <input name="refresh" type="button" value="Juego Nuevo" (click)=juegoNuevo()>
+  </form>

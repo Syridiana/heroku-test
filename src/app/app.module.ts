@@ -21,6 +21,9 @@ import { ErrorMessageComponent } from './componentes/error-message/error-message
 import { ErrorMessagesService } from './servicios/error-messages.service';
 import { SuccessMessageComponent } from './componentes/success-message/success-message.component';
 import { SuccessMessageService } from './servicios/success-message.service';
+import { GameCardComponent } from './componentes/game-card/game-card.component';
+import { ChatComponent } from './page/chat/chat.component';
+import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 
 
 @NgModule({
@@ -35,7 +38,9 @@ import { SuccessMessageService } from './servicios/success-message.service';
     NavBarComponent,
     ErrorMessageComponent,
     SuccessMessageComponent,
-
+    GameCardComponent,
+    ChatComponent,
+    AhorcadoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { SuccessMessageService } from './servicios/success-message.service';
     FormsModule,    
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     AuthenticationService, 

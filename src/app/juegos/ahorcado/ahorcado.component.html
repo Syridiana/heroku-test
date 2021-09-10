@@ -1,8 +1,33 @@
 <h1>Ahorcado</h1>
   <p id="ratefeld"><span *ngFor="let guion of palabraGuiones">{{guion}}</span></p>
   <form name="rateformular">
-  <input name="ratezeichen" type="text" size="5" maxlength="1" [(ngModel)]="letraIngresada">
-  <input name="ratebutton" type="button" value="Adivina" (click)=chequearLetraIngresada()>
+  <button value="A" (click)="chequearLetraIngresada('A')">A</button>
+  <button value="A" (click)="chequearLetraIngresada('B')">B</button>
+  <button value="A" (click)="chequearLetraIngresada('C')">C</button>
+  <button value="A" (click)="chequearLetraIngresada('D')">D</button>
+  <button value="A" (click)="chequearLetraIngresada('E')">E</button>
+  <button value="A" (click)="chequearLetraIngresada('F')">F</button>
+  <button value="A" (click)="chequearLetraIngresada('G')">G</button>
+  <button value="A" (click)="chequearLetraIngresada('H')">H</button>
+  <button value="A" (click)="chequearLetraIngresada('I')">I</button>
+  <button value="A" (click)="chequearLetraIngresada('J')">J</button>
+  <button value="A" (click)="chequearLetraIngresada('K')">K</button>
+  <button value="A" (click)="chequearLetraIngresada('L')">L</button>
+  <button value="A" (click)="chequearLetraIngresada('M')">M</button>
+  <button value="A" (click)="chequearLetraIngresada('N')">N</button>
+  <button value="A" (click)="chequearLetraIngresada('Ñ')">Ñ</button>
+  <button value="A" (click)="chequearLetraIngresada('O')">O</button>
+  <button value="A" (click)="chequearLetraIngresada('P')">P</button>
+  <button value="A" (click)="chequearLetraIngresada('Q')">Q</button>
+  <button value="A" (click)="chequearLetraIngresada('R')">R</button>
+  <button value="A" (click)="chequearLetraIngresada('S')">S</button>
+  <button value="A" (click)="chequearLetraIngresada('T')">T</button>
+  <button value="A" (click)="chequearLetraIngresada('U')">U</button>
+  <button value="A" (click)="chequearLetraIngresada('V')">V</button>
+  <button value="A" (click)="chequearLetraIngresada('W')">W</button>
+  <button value="A" (click)="chequearLetraIngresada('X')">X</button>
+  <button value="A" (click)="chequearLetraIngresada('Y')">Y</button>
+  <button value="A" (click)="chequearLetraIngresada('Z')">Z</button>
   
   <p id="gerateneBuchstaben">Letras erroneas: <span *ngFor="let letra of letrasErroneas">{{letra}}</span></p>
   <img src="http://www.writteninpencil.de/Projekte/Hangman/hangman0.png" id="hangman"><br />

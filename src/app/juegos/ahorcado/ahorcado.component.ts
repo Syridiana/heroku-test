@@ -38,9 +38,9 @@ export class AhorcadoComponent implements OnInit {
     }
    }
 
-   chequearLetraIngresada(){
+   chequearLetraIngresada(letra: string){
     this.letraCorrecta = false;
-    this.letraIngresada = this.letraIngresada.toUpperCase();
+    this.letraIngresada = letra;
     for (var i = 0; i < this.palabra.length; i++){
       if(this.palabra[i] === this.letraIngresada){
         this.palabraGuiones[i] = this.letraIngresada + " ";

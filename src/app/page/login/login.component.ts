@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private routes: Router, public authService: AuthenticationService, private usuarioService:Usuario, private usuarioActual: Usuario) { 
+  constructor(private routes: Router, public authService: AuthenticationService, 
+    private usuarioService:Usuario, private usuarioActual: Usuario) { 
     this.usuarioActual = usuarioService;
   }
 

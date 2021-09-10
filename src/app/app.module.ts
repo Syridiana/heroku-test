@@ -48,7 +48,7 @@ import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
     FormsModule,    
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     AuthenticationService, 

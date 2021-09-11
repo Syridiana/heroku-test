@@ -11,7 +11,6 @@ import { LoginComponent } from './page/login/login.component';
 import { ErrorComponent } from './page/error/error.component';
 import { QuienSoyComponent } from './page/quien-soy/quien-soy.component';
 import { Ej1Component } from './page/ej1/ej1.component';
-import { MenuPrincipalComponent } from './page/menu-principal/menu-principal.component';
 import { AuthenticationService } from './servicios/auth.service';
 
 import { environment } from '../environments/environment';
@@ -24,6 +23,9 @@ import { SuccessMessageService } from './servicios/success-message.service';
 import { GameCardComponent } from './componentes/game-card/game-card.component';
 import { ChatComponent } from './page/chat/chat.component';
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+
 
 
 @NgModule({
@@ -34,13 +36,12 @@ import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
     ErrorComponent,
     QuienSoyComponent,
     Ej1Component,
-    MenuPrincipalComponent,
     NavBarComponent,
     ErrorMessageComponent,
     SuccessMessageComponent,
     GameCardComponent,
     ChatComponent,
-    AhorcadoComponent
+    AhorcadoComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
     FormsModule,    
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    NgbModule
+    NgbModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     AuthenticationService, 

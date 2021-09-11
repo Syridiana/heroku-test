@@ -1,1 +1,41 @@
-<p>chat works!</p>
+
+
+<div *ngIf="loggedUser" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="container-chat">
+      <div class="chat-container" itemSize="50">
+        <div
+          fxLayout="column"
+          fxFlexAlign="center flex-start"
+          *ngFor="let chat of chatService.chats"
+        >
+          <div fxLayout="row" fxFlexAlign="flex-end center">
+            <img class="image-chat-user" [src]="chat.image" alt="img profile" />
+            <span class="name-chat-user">
+              {{ chat.name }}
+            </span><span class="message-user">  {{ chat.dateString }}</span>
+          </div>
+          <p class="message-user">{{ chat.message }}</p>
+        </div>
+      </div>
+  
+      <div class="container-send-message" appearance="fill">
+        <div>Escribe un mensaje...</div>
+        <input
+          matInput
+          type="text"
+          name="message"
+          [(ngModel)]="message"
+          (keyup.enter)="sendMessage()"
+          placeholder="Aa"
+        />
+  
+        <button mat-button matSuffix mat-icon-button (click)="sendMessage()">
+          <div>send</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="!loggedUser">
+    <p>Sorry you need to be logged in to use our chat room</p>
+</div>

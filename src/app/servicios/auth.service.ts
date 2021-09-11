@@ -32,11 +32,11 @@ export class AuthenticationService {
         this.isLoggedIn = true;
         this.email = email;
         this.successMessageService.message = 'Successful login! Welcome ' + this.usuarioService.email;
+        this.routes.navigate(['/home']);
 
         setTimeout(() => {
           this.successMessageService.message = "";
-          this.routes.navigate(['/home']);
-        }, 3000);
+        }, 2000);
 
       })
       .catch((error: any) => {
@@ -44,7 +44,7 @@ export class AuthenticationService {
 
         setTimeout(() => {
           this.errorMessageService.message = '';
-        }, 3000);
+        }, 2000);
       });
   }
 
@@ -60,18 +60,18 @@ export class AuthenticationService {
         this.isLoggedIn = true;
         this.email = email;
         this.successMessageService.message = 'Successful login! Welcome ' + this.usuarioService.email;
+        this.routes.navigate(['/home']);
 
         setTimeout(() => {
-          this.routes.navigate(['/home']);
           this.successMessageService.message = "";
-        }, 3000);
+        }, 2000);
       })
       .catch((error: any) => {
         this.errorMessageService.message = error.message;
 
         setTimeout(() => {
           this.errorMessageService.message = '';
-        }, 3000);
+        }, 2000);
       });
   }
 
@@ -85,6 +85,10 @@ export class AuthenticationService {
     sessionStorage.setItem('loggedUser', '');
     this.isLoggedIn = false;
     this.email = "";
+
+    setTimeout(() => {
+      this.routes.navigate(['/home']);
+    }, 2000);
   }
 
   

@@ -36,10 +36,11 @@
     <br />
     <p id="gerateneBuchstaben">Letras erroneas: <span *ngFor="let letra of letrasErroneas">{{letra}}</span></p>
     <p class="message">{{message}}</p>
-    <div id="vidas">
-      <img id="vidas" *ngFor="let item of vidas" class="vida" src="../../../assets/img/heart.svg" />
+    <div id="vidas" *ngIf="!won">
+      <img id="vidas" *ngFor="let item of vidas"  class="vida" src="../../../assets/img/heart.svg" />
     </div>
     <img class="dead" src="../../../assets/img/dead.svg" *ngIf="vidas.length == 0" alt="">
+    <img class="win" src="../../../assets/img/free.svg" *ngIf="won" alt="">
     <br />
     <input class="btn btn-lg btn-primary btn-block" name="refresh" type="button" value="Juego Nuevo"
       (click)=juegoNuevo()>

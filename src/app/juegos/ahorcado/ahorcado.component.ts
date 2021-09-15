@@ -23,6 +23,7 @@ export class AhorcadoComponent implements OnInit {
     letrasErroneas:any;
     vidas=[1, 1, 1, 1, 1, 1];
     message='Be brave';
+    won=false;
 
   constructor() {
     this.random = Math.floor((Math.random()*(this.palabras.length-1))); 
@@ -73,7 +74,8 @@ export class AhorcadoComponent implements OnInit {
       }
     }
     if(flag){
-      window.alert("You win!");
+      this.message = 'You\'re free !';
+      this.won=true;
     }
 
   }
@@ -88,6 +90,7 @@ export class AhorcadoComponent implements OnInit {
     this.letrasErroneas = [];
     this.vidas=[1, 1, 1, 1, 1, 1];
     this.message='Be brave';
+    this.won=false;
   }
 
   ngOnInit(): void {

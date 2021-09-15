@@ -25,6 +25,19 @@ export class NavBarComponent implements OnInit {
     setTimeout(()=>{
       this.showLogOutMessage = false;
     }, 3000)
-    }
+  }
+
+  isUserLogged() {
+     if(sessionStorage.getItem('loggedUser') != ''){
+       return true;
+     } else{
+       return false;
+     }
+  }
+
+  
+  getUserLogged() {
+    return sessionStorage.getItem('loggedUser');
+  }
 
 }

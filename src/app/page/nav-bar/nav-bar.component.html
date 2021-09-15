@@ -16,9 +16,9 @@
         <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/quien-soy">Quien soy</a>
         <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/ej1">Ejercicio 1</a>
         <a class="py-2 d-none d-md-inline-block buttonNav" routerLink="/error">Ejercicio 2</a>
-        <a class="py-2 d-none d-md-inline-block buttonNav" *ngIf="!authService.isLoggedIn" routerLink="/login">Login/Signup</a>
-        <a class="py-2 d-none d-md-inline-block buttonNav" id="logout" *ngIf="authService.isLoggedIn" (click)=signOut()>Logout</a>
-        <p class="py-2 d-none d-md-inline-block buttonNav" *ngIf="authService.isLoggedIn">Bienvenida/o: {{this.authService.email}}</p>
+        <a class="py-2 d-none d-md-inline-block buttonNav" *ngIf="!isUserLogged()" routerLink="/login">Login/Signup</a>
+        <a class="py-2 d-none d-md-inline-block buttonNav" id="logout" *ngIf="isUserLogged()" (click)=signOut()>Logout</a>
+        <p class="py-2 d-none d-md-inline-block buttonNav" *ngIf="isUserLogged()">Bienvenida/o: {{getUserLogged()}}</p>
     </div>
 </nav>
 <div class="alert alert-danger" *ngIf="showLogOutMessage">Successful logout ! See you soon</div>

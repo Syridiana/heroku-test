@@ -12,13 +12,11 @@ import { SuccessMessageService } from './success-message.service';
 
 export class AuthenticationService {
   userData: Observable<firebase.User | null>;
-  isLoggedIn: boolean;
   email = "";
 
   constructor(private angularFireAuth: AngularFireAuth, private usuarioService: Usuario, private routes: Router,
     private errorMessageService: ErrorMessagesService, private successMessageService: SuccessMessageService) {
     this.userData = angularFireAuth.authState;
-    this.isLoggedIn = false;
   }
 
   /* Sign up */
@@ -29,7 +27,6 @@ export class AuthenticationService {
         this.usuarioService.email = email;
         this.usuarioService.password = password;
         sessionStorage.setItem('loggedUser', email);
-        this.isLoggedIn = true;
         this.email = email;
         this.successMessageService.message = 'Successful login! Welcome ' + this.usuarioService.email;
         this.routes.navigate(['/home']);
@@ -57,7 +54,6 @@ export class AuthenticationService {
         this.usuarioService.email = email;
         this.usuarioService.password = password;
         sessionStorage.setItem('loggedUser', email);
-        this.isLoggedIn = true;
         this.email = email;
         this.successMessageService.message = 'Successful login! Welcome ' + this.usuarioService.email;
         this.routes.navigate(['/home']);
@@ -83,7 +79,6 @@ export class AuthenticationService {
     this.usuarioService.email = '';
     this.usuarioService.password = '';
     sessionStorage.setItem('loggedUser', '');
-    this.isLoggedIn = false;
     this.email = "";
 
     setTimeout(() => {
@@ -91,5 +86,8 @@ export class AuthenticationService {
     }, 2000);
   }
 
+  getIsLoggedIn(){
+    return sessionStorage.getItem('loggedUser');
+  }
   
 }

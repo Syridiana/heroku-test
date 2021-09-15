@@ -21,6 +21,8 @@ export class AhorcadoComponent implements OnInit {
     letraIngresada:string;
     letraCorrecta: boolean;
     letrasErroneas:any;
+    vidas=[1, 1, 1, 1, 1, 1];
+    message='Be brave';
 
   constructor() {
     this.random = Math.floor((Math.random()*(this.palabras.length-1))); 
@@ -50,10 +52,11 @@ export class AhorcadoComponent implements OnInit {
 
     if(!this.letraCorrecta){
       this.letrasErroneas.push(this.letraIngresada);
+      this.vidas.pop();
     }
 
     if(this.letrasErroneas.length === 6){
-      window.alert("Uh...I guess you're dead now.");
+      this.message = 'Ups! You\'re dead now';
     }
 
     this.chequearPalabraCompleta();
@@ -83,6 +86,8 @@ export class AhorcadoComponent implements OnInit {
     this.letraIngresada = "";
     this.letraCorrecta = false;
     this.letrasErroneas = [];
+    this.vidas=[1, 1, 1, 1, 1, 1];
+    this.message='Be brave';
   }
 
   ngOnInit(): void {

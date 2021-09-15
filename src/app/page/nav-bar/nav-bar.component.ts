@@ -28,10 +28,12 @@ export class NavBarComponent implements OnInit {
   }
 
   isUserLogged() {
-     if(sessionStorage.getItem('loggedUser') != ''){
-       return true;
-     } else{
+     if(sessionStorage.getItem('loggedUser') == '' ||  
+     sessionStorage.getItem('loggedUser') == null || 
+     sessionStorage.getItem('loggedUser') == undefined){
        return false;
+     } else{
+       return true;
      }
   }
 

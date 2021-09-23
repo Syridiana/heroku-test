@@ -7,6 +7,7 @@
           fxLayout="column"
           fxFlexAlign="center flex-start"
           *ngFor="let chat of chatService.chats"
+          [ngClass]="{'derecha': chat.name == loggedUser}"
         >
           <div fxLayout="row" fxFlexAlign="flex-end center">
             <img class="image-chat-user" [src]="chat.image" alt="img profile" />

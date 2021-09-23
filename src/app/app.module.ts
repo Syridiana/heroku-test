@@ -24,7 +24,7 @@ import { GameCardComponent } from './componentes/game-card/game-card.component';
 import { ChatComponent } from './page/chat/chat.component';
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -50,7 +50,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     NgbModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule, 
+    HttpClientModule
   ],
   providers: [
     AuthenticationService, 

@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
   email = '';
   pass = '';
 
-
-
   constructor(private routes: Router, public authService: AuthenticationService, 
     private usuarioService:Usuario, private usuarioActual: Usuario) { 
     this.usuarioActual = usuarioService;

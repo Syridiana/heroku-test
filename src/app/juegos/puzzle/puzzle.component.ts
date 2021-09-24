@@ -26,7 +26,7 @@ export class PuzzleComponent implements OnInit {
 
   constructor() {
     this.mezclarPiezas(30);
-   }
+  }
 
   /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
   Existen diferentes formas de hacer este chequeo a partir de la grilla. */
@@ -41,7 +41,6 @@ export class PuzzleComponent implements OnInit {
       return true;
     } else {
       return false;
-
     }
   }
 
@@ -132,11 +131,10 @@ export class PuzzleComponent implements OnInit {
       this.intercambiarPosiciones(this.filaVacia, this.columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
       this.actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
       this.guardarUltimoMovimiento(direccion);
-      this.mostrarCartelGanador();
     }
   }
 
-  guardarUltimoMovimiento(movimiento:string){
+  guardarUltimoMovimiento(movimiento: string) {
     this.ultimoMov = movimiento;
     this.movimientos.push(this.direccion);
   }
@@ -173,53 +171,66 @@ export class PuzzleComponent implements OnInit {
     // Intercambio posiciones en el DOM
     let elementoPieza1 = document.getElementById(idPieza1);
     let elementoPieza2 = document.getElementById(idPieza2);
+    let padre:any;
+    let clonElemento1:any;
+    let clonElemento2:any;
 
-    if (elementoPieza1 != null && elementoPieza2 != null) {
-      let padre = elementoPieza1.parentNode;
-      let clonElemento1 = elementoPieza1.cloneNode(true);
-      let clonElemento2 = elementoPieza2.cloneNode(true);
+    if(elementoPieza1 != null){
+      padre = elementoPieza1.parentNode;
+    }
 
-      if (clonElemento1 != null && clonElemento2 != null && padre != null) {
-        padre.replaceChild(clonElemento1, elementoPieza2);
-        padre.replaceChild(clonElemento2, elementoPieza1);
-      }
+    if(elementoPieza1 != null){
+      clonElemento1 = elementoPieza1.cloneNode(true);
+    }
+
+    if(elementoPieza2 != null){
+      clonElemento2 = elementoPieza2.cloneNode(true);
+    }
+
+    if(clonElemento1 != null){
+      padre.replaceChild(clonElemento1, elementoPieza2);
+    }
+
+    if(clonElemento2 != null){
+      padre.replaceChild(clonElemento2, elementoPieza1);
     }
 
   }
 
   /* Actualiza la representación visual del último movimiento 
   en la pantalla, representado con una flecha. */
-  actualizarUltimoMovimiento(movimiento:string) {
+  actualizarUltimoMovimiento(movimiento: string) {
     this.moverEnDireccion(movimiento);
-   }
+    this.mostrarCartelGanador();
+     }
 
 
   /* Función que mezcla las piezas del tablero una cantidad de veces dada.
   Se calcula una posición aleatoria y se mueve en esa dirección. De esta forma
   se mezclará todo el tablero. */
 
-  mezclarPiezas(veces:number) {
+  mezclarPiezas(veces: number) {
     if (veces <= 0) {
       return;
     }
-    
+
     let direcciones = ['↓', '↑', '→', '←'
-      ];
-  
+    ];
+
     let direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
     this.moverEnDireccion(direccion);
-  
-    setTimeout(()=> {
-        this.mezclarPiezas(veces - 1);
-      }, 100);
+
+    setTimeout(() => {
+      this.mezclarPiezas(veces - 1);
+    }, 100);
     this.movimientos.pop();
   }
 
   reiniciar() {
     this.mezclarPiezas(30);
-    this.movimientos=[''];
+    this.movimientos = [''];
 
- }
+  }
 
 
   ngOnInit(): void {

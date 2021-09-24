@@ -1,15 +1,14 @@
 
 
-<div *ngIf="loggedUser" fxLayout="column" fxLayoutAlign="space-between center">
+<div *ngIf="loggedUser">
     <div class="container-chat">
-      <div class="chat-container" itemSize="50">
+      <div class="chat-container">
         <div
-          fxLayout="column"
-          fxFlexAlign="center flex-start"
           *ngFor="let chat of chatService.chats"
           [ngClass]="{'derecha': chat.name == loggedUser}"
+          class="chatBubble"
         >
-          <div fxLayout="row" fxFlexAlign="flex-end center">
+          <div>
             <img class="image-chat-user" [src]="chat.image" alt="img profile" />
             <span class="name-chat-user">
               {{ chat.name }}

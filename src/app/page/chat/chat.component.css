@@ -30,5 +30,12 @@
   }
 
   .derecha{
-    margin-left: 4px!important;
+    margin-left: 76%!important;
+  }
+
+  .chatBubble{
+    background-color: #dddddd;
+    border-radius: 10px;
+    padding: 0 10px;
+    width: 90%;
   }

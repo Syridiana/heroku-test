@@ -12,31 +12,27 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioService {
-  private messagesCollection: AngularFirestoreCollection<UserI>;
-  private nameCollectionDB = 'usuarios';
-  public isUserLoggedIn = false;
+export class UserService {
+  private messagesCollection: AngularFirestoreCollection<PuntajeI>;
+  private nameCollectionDB = 'puntajes';
+
   public currentUser!: UserI | null;
-  public chats: UserI[] = [];
+  public chats: PuntajeI[] = [];
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
-    this.messagesCollection = afs.collection<UserI>(
-      this.nameCollectionDB
+    this.messagesCollection = afs.collection<PuntajeI>(
+      this.nameCollectionDB,
+      (ref) => ref.orderBy('createdAt', 'desc').limit(6)
     );
 
     this.afAuth.onAuthStateChanged((user) => {
       this.currentUser = user;
-      if(user){
-        this.isUserLoggedIn = true;
-      } else {
-        this.isUserLoggedIn = false;
-      }
     });
   }
 
   loadAllMessages() {
     return this.messagesCollection.valueChanges().pipe(
-      map((messages: UserI[]) => {
+      map((messages: PuntajeI[]) => {
         this.chats = [];
 
         for (const message of messages) {
@@ -48,6 +44,19 @@ export class UsuarioService {
     );
   }
 
+  async addPuntaje(textMessage: number) {
+    try {
+      const message: PuntajeI = {
+        useruid: this.currentUser?.uid,
+        userEmail: this.currentUser?.email,
+        puntaje: textMessage,
+        createdAt: new Date().getTime(),
+        dateString: new Date().toLocaleTimeString()
+      };
 
-
+      return await this.messagesCollection.add(message);
+    } catch (error:any) {
+      throw new Error(error.message);
+    }
+  }
 }

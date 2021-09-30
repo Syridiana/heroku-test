@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/servicios/auth.service';
-import { Usuario } from 'src/app/servicios/usuario.service';
+import { UserI } from 'src/app/clases/UserI';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 
 @Component({
@@ -10,9 +11,13 @@ import { Usuario } from 'src/app/servicios/usuario.service';
 })
 export class NavBarComponent implements OnInit {
   userDisplayName : any;
-  showLogOutMessage = false;
+  public currentUser!: UserI | null;
 
-  constructor(public authService: AuthenticationService, private usuarioService: Usuario) {
+  constructor(public authService: AuthenticationService,  private angularFireAuth: AngularFireAuth,) {
+    this.angularFireAuth.onAuthStateChanged((user) => {
+      this.currentUser = user;
+      this.userDisplayName = this.currentUser?.email;
+    });
    }
 
 
@@ -21,25 +26,20 @@ export class NavBarComponent implements OnInit {
 
   signOut() {
     this.authService.SignOut();
-    this.showLogOutMessage = true;
-    setTimeout(()=>{
-      this.showLogOutMessage = false;
-    }, 3000)
   }
 
   isUserLogged() {
-     if(sessionStorage.getItem('loggedUser') == '' ||  
-     sessionStorage.getItem('loggedUser') == null || 
-     sessionStorage.getItem('loggedUser') == undefined){
+     if(!this.currentUser){
        return false;
      } else{
+
        return true;
      }
   }
 
   
   getUserLogged() {
-    return sessionStorage.getItem('loggedUser');
+    return this.currentUser;
   }
 
 }

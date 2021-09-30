@@ -1,22 +1,39 @@
+<div id="loginContainer">
+
 <form class="form-signin">
   <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
   <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" name="email" placeholder="Email address" required autofocus>
+  <input type="email" class="inputEmail" class="form-control" [(ngModel)]="email" name="email" placeholder="Email address" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" [(ngModel)]="pass" name="pass" placeholder="Password" required>
-<!--   <label for="inputUsername" class="sr-only">Username</label>
-  <input type="text" id="inputPassword" class="form-control" [(ngModel)]="username" name="username" placeholder="Username" required>
-  <label for="inputPhotoURL" class="sr-only">PhotoURL</label>
-  <input type="text" id="photoURL" class="form-control" [(ngModel)]="photoURL" name="photoURL" placeholder="PhotoURL" required>
-  <br> -->
-  <div class="checkbox mb-3">
+  <input type="password" class="inputPassword" class="form-control" [(ngModel)]="pass" name="pass" placeholder="Password" required>
+  <br>
+<!--   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me"> Remember me
     </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" id="inBtn" type="button" (mouseenter)=playTlIntn() (click)=signIn()>Ingresar</button>
-  <button class="btn btn-lg btn-info btn-block" id="upBtn" type="button" (click)=signUp()>Registrate</button>
+  </div> -->
+  <button class="btn btn-lg btn-primary btn-block" id="inBtn" type="button" (click)=signIn()>Ingresar</button>
   <button class="btn btn-lg btn-secondary btn-block" type="button" (click)=TestSignIn()>Test Login</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
 </form>
+
+<form class="form-signin">
+  <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input type="email" class="inputEmail" class="form-control" [(ngModel)]="email" name="email" placeholder="Email address" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" class="inputPassword" class="form-control" [(ngModel)]="pass" name="pass" placeholder="Password" required>
+  <label for="inputUsername" class="sr-only">Username</label>
+  <input type="text" id="inputUsername" class="form-control" [(ngModel)]="username" name="username" placeholder="Username">
+  <label for="inputPhotoURL" class="sr-only">PhotoURL</label>
+  <input type="text" id="inputPhotoURL" class="form-control" [(ngModel)]="photoURL" name="photoURL" placeholder="PhotoURL">
+  <br>
+<!--   <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div> -->
+  <button class="btn btn-lg btn-info btn-block" id="upBtn" type="button" (click)=signUp()>Registrate</button>
+</form>
+</div>

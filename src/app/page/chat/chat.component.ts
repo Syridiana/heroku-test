@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
 import { NotificationService } from '../../servicios/notification.service';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { UserI } from 'src/app/clases/UserI';
 
 @Component({
   selector: 'app-chat',
@@ -14,11 +16,13 @@ export class ChatComponent implements OnInit {
 
   constructor(
     public chatService: ChatService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private usuarioService: UsuarioService
   ) {
     this.message = '';
     this.chatService.loadAllMessages().subscribe();
-    this.loggedUser = sessionStorage.getItem('loggedUser');
+      this.loggedUser = usuarioService.currentUser;
+    
   }
 
   ngOnInit(): void {}

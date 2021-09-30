@@ -10,15 +10,7 @@ import Swal from 'sweetalert2';
 export class PreguntadosComponent implements OnInit {
   random: any;
   pickedMovie: any;
-  movieListId = [{ 'id': 694, 'name': 'The shining' }/* ,
-  { 'id': 550, 'name': 'El Club de la Pelea' },
-  { 'id': 493922, 'name': 'Hereditary' },
-  { 'id': 530385, 'name': 'Midsommar' },
-  { 'id': 348, 'name': 'Alien: Octavo Pasajero' },
-  { 'id': 149, 'name': 'Akira' },
-  { 'id': 128, 'name': 'La Princesa Mononoke' },
-  { 'id': 62, 'name': '2001: Odisea del Espacio' },
-  { 'id': 103, 'name': 'Taxi Driver' } */];
+  movieListId = [{ 'id': 694, 'name': 'The shining' }];
 
   imageUrl = '';
   movieName = "";

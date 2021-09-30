@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/servicios/usuario.service';
 import { AuthenticationService } from 'src/app/servicios/auth.service';
-import { gsap } from "gsap";
-
-
 
 
 @Component({
@@ -15,28 +11,22 @@ import { gsap } from "gsap";
 export class LoginComponent implements OnInit {
   email = '';
   pass = '';
+  photoURL = '';
+  username = "";
 
-  constructor(private routes: Router, public authService: AuthenticationService, 
-    private usuarioService:Usuario, private usuarioActual: Usuario) { 
-    this.usuarioActual = usuarioService;
+  constructor(private routes: Router, public authService: AuthenticationService) { 
+  
   }
 
-  tl = gsap.timeline({paused:true});
 
   ngOnInit(): void {
 
   }
 
-  createTl(){
-    this.tl.to('#inBtn', {duration: .5, yoyo: true, repeat: 1, y:-5, ease: "back.out(4)"})
-  }
-  playTlIntn(){
-    this.createTl();
-    this.tl.play();
-  }
+
   
   signUp() {
-    this.authService.SignUp(this.email, this.pass);
+    this.authService.SignUp(this.email, this.pass, this.username, this.photoURL);
     }
     
     signIn() {

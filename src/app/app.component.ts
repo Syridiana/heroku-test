@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Usuario } from './servicios/usuario.service';
 
 
 @Component({
@@ -14,7 +13,7 @@ export class AppComponent {
   promedio = 0;
 
 
-  constructor(private usuario: Usuario) {
+  constructor() {
   }
 
   calcular(){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../servicios/user.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -24,8 +25,9 @@ export class AhorcadoComponent implements OnInit {
     vidas=[1, 1, 1, 1, 1, 1];
     message='Be brave';
     won=false;
+    puntaje=0;
 
-  constructor() {
+  constructor( public puntajeService: UserService) {
     this.random = Math.floor((Math.random()*(this.palabras.length-1))); 
     this.palabra = this.palabras[this.random];
     this.palabraGuiones = new Array(this.palabra.length);
@@ -58,6 +60,9 @@ export class AhorcadoComponent implements OnInit {
 
     if(this.letrasErroneas.length === 6){
       this.message = 'Ups! You\'re dead now';
+      this.puntaje = -100;
+      this.senPuntaje();
+
     }
 
     this.chequearPalabraCompleta();
@@ -76,6 +81,8 @@ export class AhorcadoComponent implements OnInit {
     if(flag){
       this.message = 'You\'re free !';
       this.won=true;
+      this.puntaje = 100;
+      this.senPuntaje();
     }
 
   }
@@ -91,9 +98,25 @@ export class AhorcadoComponent implements OnInit {
     this.vidas=[1, 1, 1, 1, 1, 1];
     this.message='Be brave';
     this.won=false;
+    this.puntaje = 0;
   }
 
+  
+
   ngOnInit(): void {
+  }
+
+  async senPuntaje() {
+    try {
+      if (this.message.length === 0) {
+        return;
+      }
+      await this.puntajeService.addPuntaje(this.puntaje);
+    } catch (error: any) {
+      /* this.notification.openSnackBar(error.message, 'Cerrar'); */
+    } finally {
+      this.message = '';
+    }
   }
 
 }

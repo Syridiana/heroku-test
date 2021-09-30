@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore';
 import { Observable, throwError } from 'rxjs';
-import { Usuario } from 'src/app/servicios/usuario.service';
 import { Router } from '@angular/router';
-import { ErrorMessagesService } from 'src/app/servicios/error-messages.service';
-import { SuccessMessageService } from './success-message.service';
+import { UserI } from '../clases/UserI';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -12,37 +15,51 @@ import { SuccessMessageService } from './success-message.service';
 })
 
 export class AuthenticationService {
+  private usersCollection: AngularFirestoreCollection<UserI>;
   userData: Observable<firebase.User | null>;
+  nameCollectionDB = "usuarios";
   email = "";
+  public currentUser!: UserI | null;
 
-  constructor(private angularFireAuth: AngularFireAuth, private usuarioService: Usuario, private routes: Router,
-    private errorMessageService: ErrorMessagesService, private successMessageService: SuccessMessageService) {
+  constructor(private angularFireAuth: AngularFireAuth,  private routes: Router,
+    private afs: AngularFirestore) {
     this.userData = angularFireAuth.authState;
+    this.angularFireAuth.onAuthStateChanged((user) => {
+      this.currentUser = user;
+    });
+    this.usersCollection = afs.collection<UserI>(
+      this.nameCollectionDB
+    );
   }
 
   /* Sign up */
-  SignUp(email: string, password: string) {
+  SignUp(email: string, password: string, username: string, photoURL: string) {
     this.angularFireAuth.createUserWithEmailAndPassword(email, password)
       .then((res: any) => {
         console.log('You are Successfully signed up!', res);
-        this.usuarioService.email = email;
-        this.usuarioService.password = password;
-        sessionStorage.setItem('loggedUser', email);
         this.email = email;
-        this.successMessageService.message = 'Successful login! Welcome ' + this.usuarioService.email;
+        this.addUserCollection(email, username, photoURL);
         this.routes.navigate(['/home']);
 
-        setTimeout(() => {
-          this.successMessageService.message = "";
-        }, 2000);
+        Swal.fire({
+          icon: 'success',
+          title: 'Successful sign up!',
+          text: 'Welcome ' + email,
+          showConfirmButton: false,
+          timer: 1500
+        });
 
       })
       .catch((error: any) => {
-        this.errorMessageService.message = error.message;
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
 
-        setTimeout(() => {
-          this.errorMessageService.message = '';
-        }, 2000);
+
       });
   }
 
@@ -52,23 +69,27 @@ export class AuthenticationService {
       .signInWithEmailAndPassword(email, password)
       .then((res: any) => {
         console.log('You are in!');
-        this.usuarioService.email = email;
-        this.usuarioService.password = password;
-        sessionStorage.setItem('loggedUser', email);
         this.email = email;
-        this.successMessageService.message = 'Successful login! Welcome ' + this.usuarioService.email;
         this.routes.navigate(['/home']);
 
-        setTimeout(() => {
-          this.successMessageService.message = "";
-        }, 2000);
+        Swal.fire({
+          icon: 'success',
+          title: 'Successful login!',
+          text:  'Welcome ' + email,
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch((error: any) => {
-        this.errorMessageService.message = error.message;
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
 
-        setTimeout(() => {
-          this.errorMessageService.message = '';
-        }, 2000);
+
       });
   }
 
@@ -77,18 +98,38 @@ export class AuthenticationService {
   SignOut() {
     this.angularFireAuth
       .signOut();
-    this.usuarioService.email = '';
-    this.usuarioService.password = '';
-    sessionStorage.setItem('loggedUser', '');
     this.email = "";
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Bye',
+      text: 'See you soon !',
+      showConfirmButton: false,
+      timer: 1500
+    });
 
     setTimeout(() => {
       this.routes.navigate(['/home']);
-    }, 2000);
+    }, 1500);
   }
 
   getIsLoggedIn(){
     return sessionStorage.getItem('loggedUser');
+  }
+
+  async addUserCollection(email: string, username:string, photoURL:string) {
+    try {
+      const user: UserI = {
+        uid: this.currentUser?.uid,
+        displayName: username,
+        email: email,
+        photoURL: photoURL
+      };
+
+      return await this.usersCollection.add(user);
+    } catch (error:any) {
+      throw new Error(error.message);
+    }
   }
   
 }

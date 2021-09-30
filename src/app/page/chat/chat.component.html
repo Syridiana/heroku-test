@@ -5,7 +5,7 @@
       <div class="chat-container">
         <div
           *ngFor="let chat of chatService.chats"
-          [ngClass]="{'derecha': chat.name == loggedUser}"
+          [ngClass]="{'derecha': chat.name == loggedUser.email}"
           class="chatBubble"
         >
           <div>

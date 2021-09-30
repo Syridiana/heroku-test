@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/servicios/usuario.service';
+import { UserI } from 'src/app/clases/UserI';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AuthenticationService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-bienvenido',
@@ -7,12 +9,18 @@ import { Usuario } from 'src/app/servicios/usuario.service';
   styleUrls: ['./bienvenido.component.css']
 })
 export class BienvenidoComponent implements OnInit {
+  public currentUser!: UserI | null;
+  public userEmail: any | '';
 
-  constructor(private usuarioService:Usuario, public usuarioActual: Usuario) { 
-    this.usuarioActual =  new Usuario;
-    this.usuarioActual.email = usuarioService.email;
-    this.usuarioActual.password = usuarioService.password;
+  constructor(public authService: AuthenticationService,  private angularFireAuth: AngularFireAuth) {
+    this.angularFireAuth.onAuthStateChanged((user) => {
+      this.currentUser = user;
+      if(this.currentUser){
+        this.userEmail = this.currentUser.email;
+      }
+    });
    }
+
 
 
   ngOnInit(): void {

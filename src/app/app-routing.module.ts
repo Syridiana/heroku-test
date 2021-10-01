@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'home', component: BienvenidoComponent },
   { path: 'casa', component: BienvenidoComponent },
   { path: 'ej1', component: Ej1Component },
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat', component: ChatComponent},
   { path: 'juegos', loadChildren: () => import('./juegos/juegos.module').then(m => m.JuegosModule) },
   { path: '**', component: ErrorComponent }
 ];

@@ -3,6 +3,7 @@ import { ChatService } from './chat.service';
 import { NotificationService } from '../../servicios/notification.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { UserI } from 'src/app/clases/UserI';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-chat',
@@ -12,16 +13,18 @@ import { UserI } from 'src/app/clases/UserI';
 export class ChatComponent implements OnInit {
   message: string;
   element: any;
-  loggedUser:any;
+  public currentUser!: UserI | null;
 
   constructor(
     public chatService: ChatService,
     private notification: NotificationService,
-    private usuarioService: UsuarioService
+    private afAuth: AngularFireAuth
   ) {
     this.message = '';
     this.chatService.loadAllMessages().subscribe();
-      this.loggedUser = usuarioService.currentUser;
+    this.afAuth.onAuthStateChanged((user) => {
+      this.currentUser = user;
+    });
     
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { UserI } from 'src/app/clases/UserI';
 
 @Component({
   selector: 'app-puzzle',
@@ -23,9 +25,13 @@ export class PuzzleComponent implements OnInit {
   movimientos = [''];
   direccion = "";
   ultimoMov = "";
+  public currentUser!: UserI | null;
 
-  constructor() {
+  constructor(private angularFireAuth: AngularFireAuth) {
     this.mezclarPiezas(30);
+    this.angularFireAuth.onAuthStateChanged((user) => {
+      this.currentUser = user;
+    });
   }
 
   /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 

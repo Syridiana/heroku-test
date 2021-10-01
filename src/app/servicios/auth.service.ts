@@ -8,6 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserI } from '../clases/UserI';
 import Swal from 'sweetalert2';
+import { DBService } from './db.service';
 
 
 @Injectable({
@@ -22,7 +23,7 @@ export class AuthenticationService {
   public currentUser!: UserI | null;
 
   constructor(private angularFireAuth: AngularFireAuth,  private routes: Router,
-    private afs: AngularFirestore) {
+    private afs: AngularFirestore, private dbService: DBService) {
     this.userData = angularFireAuth.authState;
     this.angularFireAuth.onAuthStateChanged((user) => {
       this.currentUser = user;
@@ -38,7 +39,7 @@ export class AuthenticationService {
       .then((res: any) => {
         console.log('You are Successfully signed up!', res);
         this.email = email;
-        this.addUserCollection(email, username, photoURL);
+        this.dbService.addUserCollection(email, username, photoURL, 0);
         this.routes.navigate(['/home']);
 
         Swal.fire({
@@ -117,19 +118,6 @@ export class AuthenticationService {
     return sessionStorage.getItem('loggedUser');
   }
 
-  async addUserCollection(email: string, username:string, photoURL:string) {
-    try {
-      const user: UserI = {
-        uid: this.currentUser?.uid,
-        displayName: username,
-        email: email,
-        photoURL: photoURL
-      };
 
-      return await this.usersCollection.add(user);
-    } catch (error:any) {
-      throw new Error(error.message);
-    }
-  }
   
 }

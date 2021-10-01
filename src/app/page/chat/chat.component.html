@@ -1,11 +1,11 @@
 
 
-<div *ngIf="loggedUser">
+<div *ngIf="currentUser">
     <div class="container-chat">
       <div class="chat-container">
         <div
           *ngFor="let chat of chatService.chats"
-          [ngClass]="{'derecha': chat.name == loggedUser.email}"
+          [ngClass]="{'derecha': chat.name == currentUser.email}"
           class="chatBubble"
         >
           <div>
@@ -36,6 +36,6 @@
     </div>
   </div>
 
-  <div class="container" *ngIf="!loggedUser">
+  <div class="container" *ngIf="!currentUser">
     <p>Sorry you need to be logged in to use our chat room</p>
 </div>

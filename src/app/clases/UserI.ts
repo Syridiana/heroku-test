@@ -3,4 +3,5 @@ export interface UserI {
     displayName: string | null | undefined;
     email: string | null | undefined;
     photoURL?: string | null | undefined;
+    puntaje?: number | null | undefined;
   }
